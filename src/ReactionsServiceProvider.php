@@ -23,6 +23,7 @@ class ReactionsServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'reactions');
     }
 
     /**
@@ -33,6 +34,10 @@ class ReactionsServiceProvider extends ServiceProvider
     protected function loadMigrations()
     {
         if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/config.php' => config_path('reactions.php'),
+            ], 'config');
+
             $migrationsPath = __DIR__.'/../migrations';
 
             $this->publishes([
