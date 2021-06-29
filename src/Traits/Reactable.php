@@ -3,9 +3,9 @@
 namespace Qirolab\Laravel\Reactions\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use \Illuminate\Database\Eloquent\Model;
 use Qirolab\Laravel\Reactions\Contracts\ReactsInterface;
 use Qirolab\Laravel\Reactions\Exceptions\InvalidReactionUser;
-use Qirolab\Laravel\Reactions\Models\Reaction;
 
 trait Reactable
 {
@@ -70,7 +70,7 @@ trait Reactable
      *
      * @param  mixed         $reactionType
      * @param  mixed         $user
-     * @return Reaction|bool
+     * @return \Illuminate\Database\Eloquent\Model|bool
      */
     public function react($reactionType, $user = null)
     {
@@ -105,7 +105,7 @@ trait Reactable
      *
      * @param  mixed $reactionType
      * @param  mixed $user
-     * @return void|Reaction
+     * @return null|\Illuminate\Database\Eloquent\Model
      */
     public function toggleReaction($reactionType, $user = null)
     {
@@ -120,7 +120,7 @@ trait Reactable
      * Reaction on reactable model by user.
      *
      * @param mixed $user
-     * @return Reaction
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function reacted($user = null)
     {
@@ -132,7 +132,7 @@ trait Reactable
     /**
      * Reaction on reactable model by user.
      *
-     * @return Reaction
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function getReactedAttribute()
     {

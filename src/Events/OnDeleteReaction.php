@@ -2,9 +2,9 @@
 
 namespace Qirolab\Laravel\Reactions\Events;
 
+use Illuminate\Database\Eloquent\Model;
 use Qirolab\Laravel\Reactions\Contracts\ReactableInterface;
 use Qirolab\Laravel\Reactions\Contracts\ReactsInterface;
-use Qirolab\Laravel\Reactions\Models\Reaction;
 
 class OnDeleteReaction
 {
@@ -25,7 +25,7 @@ class OnDeleteReaction
     /**
      * Reaction model.
      *
-     * @var Reaction
+     * @var Model
      */
     public $reaction;
 
@@ -33,12 +33,12 @@ class OnDeleteReaction
      * Create a new event instance.
      *
      * @param ReactableInterface $reactable
-     * @param Reaction           $reaction
+     * @param Model $reaction
      * @param ReactsInterface    $reactBy
      *
      * @return void
      */
-    public function __construct(ReactableInterface $reactable, Reaction $reaction, ReactsInterface $reactBy)
+    public function __construct(ReactableInterface $reactable, Model $reaction, ReactsInterface $reactBy)
     {
         $this->reactable = $reactable;
         $this->reaction = $reaction;

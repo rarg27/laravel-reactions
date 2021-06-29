@@ -2,10 +2,10 @@
 
 namespace Qirolab\Laravel\Reactions\Traits;
 
+use \Illuminate\Database\Eloquent\Model;
 use Qirolab\Laravel\Reactions\Contracts\ReactableInterface;
 use Qirolab\Laravel\Reactions\Events\OnDeleteReaction;
 use Qirolab\Laravel\Reactions\Events\OnReaction;
-use Qirolab\Laravel\Reactions\Models\Reaction;
 
 trait Reacts
 {
@@ -15,7 +15,7 @@ trait Reacts
      * @param ReactableInterface $reactable
      * @param mixed              $type
      *
-     * @return Reaction
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function reactTo(ReactableInterface $reactable, $type)
     {
@@ -62,7 +62,7 @@ trait Reacts
      * @param ReactableInterface $reactable
      * @param mixed              $type
      *
-     * @return void
+     * @return null|\Illuminate\Database\Eloquent\Model
      */
     public function toggleReactionOn(ReactableInterface $reactable, $type)
     {
@@ -88,7 +88,7 @@ trait Reacts
      *
      * @param ReactableInterface $reactable
      *
-     * @return Reaction
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public function ReactedOn(ReactableInterface $reactable)
     {
@@ -123,7 +123,7 @@ trait Reacts
      *
      * @param  ReactableInterface                         $reactable
      * @param  mixed                                      $type
-     * @return \Qirolab\Laravel\Reactions\Models\Reaction
+     * @return \Illuminate\Database\Eloquent\Model
      */
     protected function storeReaction(ReactableInterface $reactable, $type)
     {
@@ -140,11 +140,11 @@ trait Reacts
     /**
      * Delete reaction.
      *
-     * @param  Reaction           $reaction
+     * @param  \Illuminate\Database\Eloquent\Model $reaction
      * @param  ReactableInterface $reactable
      * @return void
      */
-    protected function deleteReaction(Reaction $reaction, ReactableInterface $reactable)
+    protected function deleteReaction(Model $reaction, ReactableInterface $reactable)
     {
         $response = $reaction->delete();
 
