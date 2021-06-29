@@ -16,7 +16,7 @@ trait Reactable
      */
     public function reactions()
     {
-        return $this->morphMany(Reaction::class, 'reactable');
+        return $this->morphMany(config('reactions.reaction_class'), 'reactable');
     }
 
     /**
@@ -173,7 +173,7 @@ trait Reactable
      * @todo think about method name
      * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  string                                $type
-     * @param  null|int|ReactsInterface              $userId
+     * @param  null|mixed|ReactsInterface              $userId
      * @return \Illuminate\Database\Eloquent\Builder
      *
      * @throw \Qirolab\Laravel\Reactions\Exceptions\InvalidReactionUser
